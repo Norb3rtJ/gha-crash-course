@@ -13,7 +13,7 @@ jobs:
                 node-version: '18'
             - name: Install dependecies
               run: |
-                pwd
+                cd gha-second-action
                 npm install
             - name: Run test
               run: npm test
