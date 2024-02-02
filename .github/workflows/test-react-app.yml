@@ -16,4 +16,6 @@ jobs:
                 cd gha-second-action
                 npm install
             - name: Run test
-              run: npm test
+              run: |
+                cd gha-second-action
+                npm test
