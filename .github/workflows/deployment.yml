@@ -1,0 +1,43 @@
+name: Test Project
+on: push
+jobs:
+    Test:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Get code from repository
+              uses: actions/checkout@v4
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                node-version: '18'
+            - name: Install dependecies
+              run: |
+                cd gha-second-action
+                npm install
+            - name: Run test
+              run: |
+                cd gha-second-action
+                npm test
+    Deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Get code from repository
+              uses: actions/checkout@v4
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                node-version: '18'
+            - name: Install dependecies
+              run: |
+                cd gha-second-action
+                npm install
+            - name: Build project
+              run: |
+                cd gha-second-action
+                npm run build
+            - name: Deploy
+              run: echo "Deploying ..."    
+
+
