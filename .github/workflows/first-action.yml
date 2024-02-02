@@ -3,8 +3,17 @@ on: workflow_dispatch
 jobs: 
   first-job:
     runs-on: ubuntu-latest
+
     steps:
       - name: Print greeting
         run: echo "Hello Norbert"
       - name: Print goodbye
         run: echo "Done - bye!"
+      - name: Multi-line shell commands 
+        run: |
+          apt update && sudo apt upgrade
+          apt install iputils-ping
+      - name: Ping onet webpage 
+        run: |
+          ping -c 5 onet.pl
+          echo "Onet has been ping 5 times"
