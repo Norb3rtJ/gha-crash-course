@@ -1,0 +1,25 @@
+name: CI_CD_Practice_Project_04
+on: workflow_dispatch
+jobs:
+    CI_process:
+          runs-on: ubuntu-latest
+
+          steps: 
+
+            - name: Get code from Repository
+              uses: actions/checkout@v4
+            
+            - name: Install dependencis 
+              uses: actions/setup-node@v4
+              with: 
+                node-version: '18'
+            
+            - name: Install dependencis
+              run: npm install
+
+            - name: Run Lint test
+              run: npm run lint
+
+            - name: Run Tests
+              run: npm run test
+
