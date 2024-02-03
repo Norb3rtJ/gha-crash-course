@@ -3,7 +3,6 @@ on: workflow_dispatch
 jobs:
     CI_process:
           runs-on: ubuntu-latest
-
           steps: 
 
             - name: Get code from Repository
@@ -33,7 +32,12 @@ jobs:
               run: |
                 cd Practice_Project_04
                 npm run build
-            
+    Deployment:
+          needs: [CI_process]
+          if: success()
+          runs-on: ubuntu-latest
+          steps:
+
             - name: Deployment
               run: echo "Deploying ......."
 
