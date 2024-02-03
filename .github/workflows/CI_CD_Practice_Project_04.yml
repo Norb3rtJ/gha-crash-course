@@ -28,16 +28,17 @@ jobs:
                 cd Practice_Project_04
                 npm run test
             
-            - name: Run Deployment 
-              run: |
-                cd Practice_Project_04
-                npm run build
     Deployment:
           needs: [CI_process]
           if: success()
           runs-on: ubuntu-latest
           steps:
 
+            - name: Build the artifact 
+              run: |
+                cd Practice_Project_04
+                npm run build
+            
             - name: Deployment
               run: echo "Deploying ......."
 
