@@ -9,13 +9,14 @@ on:
       - dev
   workflow_dispatch:
   push:
+    paths:
+      - '/practice_project_04_02/src/components/**.jsx'
     branches:
       - main
       - dev
       - 'dev-*' # dev-new, dev-this-is-new
       - 'feat/**' # feat/dev/new
-    paths:
-      - '/practice_project_04_02/src/components/**.jsx'
+
 
 
 
