@@ -17,7 +17,7 @@ on:
       - 'dev-*' # dev-new, dev-this-is-new
       - 'feat/**' # feat/dev/new
 
-
+# Just comment to test skip process of CI 
 
 
 jobs:
