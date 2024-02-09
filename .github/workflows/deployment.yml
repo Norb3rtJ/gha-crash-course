@@ -1,5 +1,12 @@
 name: Test and Deploy
-on: [push, workflow_dispatch]
+on: 
+  push:
+    paths-ignore:
+      - .github/workflows/*
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
     Test:
         runs-on: ubuntu-latest
