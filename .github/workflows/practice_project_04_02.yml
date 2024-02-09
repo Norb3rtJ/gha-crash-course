@@ -4,7 +4,20 @@ on:
     types:
       - opened
       - edited
+    branches:
+      - main
+      - dev
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
+      - 'dev-*' # dev-new, dev-this-is-new
+      - 'feat/**' # feat/dev/new
+    paths:
+      - '/practice_project_04_02/src/components/**.jsx'
+
+
 
 jobs:
   deploy:
