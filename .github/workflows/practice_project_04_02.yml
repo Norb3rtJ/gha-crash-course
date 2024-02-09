@@ -27,4 +27,4 @@ jobs:
             cd practice_project_04_02  
             npm run build
       - name: Deploy project
-        run: echo "Deploying..."
+        run: echo "Deploying........."
