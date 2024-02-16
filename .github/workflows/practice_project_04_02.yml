@@ -65,5 +65,12 @@ jobs:
       if: success()
       runs-on: ubuntu-latest
       steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-file
+      - name: Output contents
+        run: |
+          ls /practice_project_04_02
       - name: Deploy project
         run: echo "Deploying........."
