@@ -36,6 +36,11 @@ jobs:
         run: |
           cd practice_project_04_02
           npm run test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
       - name: Build code
         run: |
             cd practice_project_04_02  
