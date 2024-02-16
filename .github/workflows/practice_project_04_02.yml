@@ -45,6 +45,7 @@ jobs:
         with:
           name: dist-file
           path: |
+            cd practice_project_04_02   
             dist
             package.json
       - name: Deploy project
