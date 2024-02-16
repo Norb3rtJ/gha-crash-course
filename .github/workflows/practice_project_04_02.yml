@@ -17,7 +17,7 @@ on:
       - 'dev-*' # dev-new, dev-this-is-new
       - 'feat/**' # feat/dev/new
 
-
+# Just comment to test skip process of CI 
 
 
 jobs:
@@ -33,12 +33,19 @@ jobs:
           cd practice_project_04_02
           npm ci
       - name: Test code
-        run: | 
+        run: |
           cd practice_project_04_02
           npm run test
       - name: Build code
-        run: | 
+        run: |
             cd practice_project_04_02  
             npm run build
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-file
+          path: |
+            dist
+            package.json
       - name: Deploy project
         run: echo "Deploying........."
