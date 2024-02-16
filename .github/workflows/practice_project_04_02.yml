@@ -45,8 +45,7 @@ jobs:
         with:
           name: dist-file
           path: |
-            cd practice_project_04_02   
-            dist
-            package.json
+            practice_project_04_02/dist
+            practice_project_04_02/package.json
       - name: Deploy project
         run: echo "Deploying........."
