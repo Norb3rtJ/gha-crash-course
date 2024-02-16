@@ -21,7 +21,7 @@ on:
 
 
 jobs:
-  deploy:
+  CI:
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
@@ -36,6 +36,18 @@ jobs:
         run: |
           cd practice_project_04_02
           npm run test
+
+  Build_Artifact:
+    needs: [CI]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install denepndencies
+        run: |
+          cd practice_project_04_02
+          npm ci
       - name: Build code
         run: |
             cd practice_project_04_02  
@@ -45,7 +57,20 @@ jobs:
         with:
           name: dist-file
           path: |
-            dist
-            package.json
+            practice_project_04_02/dist/
+            practice_project_04_02/package.json
+
+  Deploy:
+      needs: [CI, Build_Artifact]
+      if: success()
+      runs-on: ubuntu-latest
+      steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-file
+      - name: Output contents
+        run: |
+          ls
       - name: Deploy project
         run: echo "Deploying........."
