@@ -71,6 +71,6 @@ jobs:
           name: dist-file
       - name: Output contents
         run: |
-          ls /practice_project_04_02
+          ls
       - name: Deploy project
         run: echo "Deploying........."
