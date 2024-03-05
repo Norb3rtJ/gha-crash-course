@@ -56,9 +56,9 @@ jobs:
             npm run build
       - name: Publis JS filename
         id: unique_id_name
-        run: | 
-          cd practice_project_04_02
-          find dist/assets/*.js -type f -execedir echo 'name_of_script_file={}' >> $GITHUB_OUTPUT ';'
+        run: |
+          cd practice_project_04_02  
+          find dist/assets/*.js -type f -execdir echo 'name_of_script_file={}' >> $GITHUB_OUTPUT ';'
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
