@@ -41,6 +41,8 @@ jobs:
     needs: [CI]
     if: success()
     runs-on: ubuntu-latest
+    outputs:
+      script-files: ${{ steps.unique_id_name.name_of_script_file }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -52,6 +54,11 @@ jobs:
         run: |
             cd practice_project_04_02  
             npm run build
+      - name: Publis JS filename
+        id: unique_id_name
+        run: | 
+          cd practice_project_04_02
+          find dist/assets/*.js -type f -execedir echo 'name_of_script_file={}' >> $GITHUB_OUTPUT ';'
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -72,5 +79,7 @@ jobs:
       - name: Output contents
         run: |
           ls
+      - name: Output filename 
+        run: echo "${{ needs.Build_Artifact.outputs.script-files }}"
       - name: Deploy project
         run: echo "Deploying........."
