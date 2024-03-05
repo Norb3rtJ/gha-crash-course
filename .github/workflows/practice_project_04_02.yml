@@ -42,7 +42,7 @@ jobs:
     if: success()
     runs-on: ubuntu-latest
     outputs:
-      script-files: ${{ steps.unique_id_name.name_of_script_file }}
+      file-name: ${{ steps.unique_id_name.outputs.name_of_script_file }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -80,6 +80,6 @@ jobs:
         run: |
           ls
       - name: Output filename 
-        run: echo "${{ needs.Build_Artifact.outputs.script-files }}"
+        run: echo "${{ needs.Build_Artifact.outputs.file-name }}"
       - name: Deploy project
         run: echo "Deploying........."
